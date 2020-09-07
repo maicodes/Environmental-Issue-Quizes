@@ -1,0 +1,47 @@
+<!-- Scores -->
+<div class="container-fluid">
+  <h5 class="scores mt-3 ml-3">Score: {{ currCorrectAnswers }} / {{ currQuestionIndex }}</h5>
+</div>
+
+<!-- Questions -->
+<br><br>
+<div class="d-flex flex-column justify-content-center align-items-center">
+  <div class="card mt-3" style="width: 60vw;" *ngFor="let question of questionList; let i = index">
+    <div class="card-header" [ngClass]="{disabled: i > currQuestionIndex}" type="button"
+      (click)="collapse($event, question)">
+      <strong>{{i + 1}}. </strong>{{ question.question }}
+    </div>
+    <div class="card-body" *ngIf="i <= currQuestionIndex" [ngClass]="{collapse: question.disabled}">
+      <div class="d-flex flex-row justify-content-between">
+        <ul class="d-flex list-group justify-content-between mr-2">
+          <li type="button" id="0" (click)="answerHandler($event, i)"> <span class="hightlight">A</span>
+            {{ question.answers[0] }}</li>
+          <li type="button" id="2" (click)="answerHandler($event, i)"> <span class="hightlight">C</span>
+            {{ question.answers[2] }}</li>
+        </ul>
+        <ul class="d-flex list-group justify-content-between">
+          <li type="button" id="1" (click)="answerHandler($event, i)"> <span class="hightlight">B</span>
+            {{ question.answers[1] }}</li>
+          <li type="button" id="3" (click)="answerHandler($event, i)"> <span class="hightlight">D</span>
+            {{ question.answers[3] }} </li>
+        </ul>
+      </div>
+      <div *ngIf="question.isAnswered">
+        <hr>
+        <p [ngClass]="{correct: question.isCorrect == 'Correct!', incorrect: question.isCorrect == 'Incorrect!'}">
+          <strong> {{ question.isCorrect }} </strong></p>
+        <p class="correct" *ngIf="question.isCorrect == 'Incorrect!'">The correct answer is {{ question.correctLetter }}
+        </p>
+        <p *ngIf="question.fact != '' ">
+          Fun Fact: {{question.fact}}
+        </p>
+        <div *ngIf="question.source != null">
+          <hr>
+          <p *ngFor="let source of question.source; let i = index">
+            <a href={{source}} target="_blank">Source <span *ngIf="question.source.length > 1">{{i + 1}}</span></a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

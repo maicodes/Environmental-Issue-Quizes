@@ -1,0 +1,16 @@
+#home-image {
+	width: 30vw;
+	height: auto;
+}
+
+.container {
+	height: 100vh;
+}
+
+.row {
+	height: 100vh;
+}
+
+.home-content {
+	text-align: center;
+}

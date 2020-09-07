@@ -1,0 +1,31 @@
+/* red: #e1341e */
+.card-header {
+	background-color: #2d767f;
+	color: white;
+}
+
+.scores {
+	position: fixed;
+	color: #37aec8;
+}
+
+ul {
+	list-style-type: none;
+}
+
+.hightlight {
+	font-weight: bolder;
+	color: #2d767f;
+}
+
+.disabled {
+	background-color: #777a88;
+}
+
+.correct {
+	color: #3fc0c0;
+}
+
+.incorrect {
+	color: #c03f3f;
+}
